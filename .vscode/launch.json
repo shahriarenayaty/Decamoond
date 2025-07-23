@@ -1,0 +1,41 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.3.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Docker: Attach To Node",
+      "port": 9229,
+      "localRoot": "${workspaceFolder}",
+      "remoteRoot": "/app",
+      "address": "localhost",
+      "sourceMaps": true,
+      "restart": true,
+      "trace": true,
+      /****
+        Purpose
+        This setting creates a translation dictionary that maps source file paths between your remote environment (Docker container) and your local development environment.
+
+        How it works
+        In your configuration:
+
+        This specific rule tells VS Code: "Whenever you encounter a path in the source maps that starts with /app/ (your container path), replace that prefix with the local workspace folder path to locate the correct file on your development machine."
+
+        Real-world example
+        Source map points to: /app/src/services/user.service.ts (path inside container)
+        VS Code applies the override rule:
+        Replaces /app/ with your actual local workspace path (e.g., /Users/developer/projects/my-typescript-app/)
+        Resulting in: /Users/developer/projects/my-typescript-app/src/services/user.service.ts
+        This translation enables VS Code to correctly map breakpoints, display errors at the right locations, and show you the actual TypeScript source files during debugging rather than compiled JavaScript.
+        if we remove this, VS Code shows breakpoints in js files instead of ts files
+        and the debugger will not work correctly.
+        ****/
+      "sourceMapPathOverrides": {
+        "/app/*": "${workspaceFolder}/*"
+      }
+    }
+  ]
+}

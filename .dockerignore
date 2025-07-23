@@ -1,0 +1,40 @@
+node_modules
+npm-debug.log
+dist
+coverage
+.git
+.gitignore
+.DS_Store
+.nyc_output
+
+# Git and OS files
+.git
+.gitignore
+.DS_Store
+
+# Node dependencies (these will be installed inside the container)
+node_modules
+
+# Build output (this will be generated inside the container)
+dist
+
+# NPM logs
+npm-debug.log*
+
+# Docker files
+Dockerfile
+.dockerignore
+
+#Environment files
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Read me and documentation files
+README.md
+CHANGELOG.md
+LICENSE
+
+

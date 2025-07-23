@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - '3000:3000'
+      - '9229:9229'
+    depends_on:
+      - mongo
+    volumes:
+      - .:/app
+      - /app/node_modules
+    # The entrypoint now calls the script and passes the command to it.
+    # 'sh -c' is needed to execute the script. The final "$@" passes all arguments from the 'command' section.
+    entrypoint:
+      ['/bin/sh', '-c', '/app/check-package-changes.sh "$@" && exec "$@"', 'sh']
+    command: ['npm', 'run', 'start:debug']
+
+    networks:
+      - app-network
+
+  mongo:
+    image: mongo:7.0
+    ports:
+      - '27018:27017'
+    environment:
+      - MONGO_INITDB_DATABASE=decamoond
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password123
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+
+volumes:
+  mongo-data:
+
+networks:
+  app-network:
+    driver: bridge

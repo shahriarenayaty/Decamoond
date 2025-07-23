@@ -1,0 +1,32 @@
+# Use Node.js LTS version
+FROM node:lts-jod
+
+# Install procps for 'ps' command
+RUN apt-get update && apt-get install -y procps net-tools && rm -rf /var/lib/apt/lists/*
+
+
+# Set working directory
+WORKDIR /app
+
+
+COPY check-package-changes.sh ./
+
+# Copy package files
+COPY package*.json ./
+
+#Docker's build cache will skip npm ci unless package.json or package-lock.json changes, speeding up builds when dependencies are unchanged.
+
+# Ensure entrypoint script is executable
+RUN chmod +x check-package-changes.sh
+
+
+# Copy source code
+COPY . .
+
+
+# Expose port
+EXPOSE 3000
+
+
+# Start the application in development mode
+CMD ["npm", "run", "start:debug"]
