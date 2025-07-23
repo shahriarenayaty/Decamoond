@@ -135,6 +135,11 @@ $ npm run docker:down
 # View logs
 $ npm run docker:logs
 ```
+## Database Choice: MongoDB
+- **Why MongoDB?**
+  - **Project Simplicity**: For this straightforward authentication service, MongoDB provides a lightweight and flexible solution that matches the project requirements without unnecessary complexity.
+  - **Developer Comfort**: Familiarity with MongoDB allows for faster development cycles and more efficient troubleshooting during implementation.
+  - **Technical Advantage**: MongoDB's document-based structure perfectly accommodates the varying user data patterns in authentication systems, where user profiles may contain different fields based on authentication methods and user roles.
 
 ## Support
 
