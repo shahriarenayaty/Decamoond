@@ -142,9 +142,9 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 ## Stay in touch
 
-- Author - [Shahriar Enayaty](https://losiana.com/shahriarenayati)
+- Author - [Shahriar Enayaty](https://losiana.com/g/shahriarenayati)
 - Github - [https://nestjs.com](https://github.com/shahriarenayaty)
-- Stackview Holder - [@nestframework](https://twitter.com/nestframework)
+- Stackoverflow  - [@nestframework](https://stackoverflow.com/users/9349234/shahriar-enayaty)
 
 ## License
 
